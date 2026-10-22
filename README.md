@@ -1,5 +1,12 @@
 # Url Shortener — Mobile
 
+> **Template copy.** This repo is one of the name-substituted Expo SDK 53 / Expo Router
+> template copies in `bookchaowalit-mobile`. The canonical template is
+> [`bookchaowalit-mobile/community-hub-mobile`](https://github.com/bookchaowalit-mobile/community-hub-mobile);
+> this copy keeps its own code (no shared package). Consolidation/archive is pending
+> owner decision D5 (BD-033) per `repository-catalog/portfolio/MOBILE-CONSOLIDATION-2026-10.md`
+> in solo-empire.
+
 React Native mobile app (Expo) for **Url Shortener**.
 
 Part of [Chaowalit Greepoke](https://bookchaowalit.com)'s 101 Portfolio Projects.
@@ -37,9 +44,11 @@ npm test            # vitest unit tests for lib/
 npx expo export --platform android --output-dir dist   # JS bundle smoke check
 ```
 
-CI (`.github/workflows/build.yml`) runs all of the above with `npm ci`; failures
-are not masked. The EAS preview build only runs on `main` when the `EXPO_TOKEN`
-secret is configured (run `eas init` once to link the project).
+CI (`.github/workflows/ci.yml`) calls the shared `bookchaowalit/platform-ci-workflows`
+`ci-node.yml` and `security.yml` (v1.1.1, SHA-pinned): `npm ci`, lint, typecheck, tests,
+the Android JS bundle export above, plus Gitleaks, Semgrep, OSV-Scanner and Trivy.
+Failures are not masked. There is no EAS / Expo cloud build in CI: that needs an
+owner-linked Expo account (owner action).
 
 ## Build
 
